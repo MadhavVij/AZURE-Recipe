@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <title>Quiz 8</title>
+
+    </head>
+    <body>
+    <div class="container">
+        <div class="media-left">
+         <img src="{{ url_for('static', filename = 'image.jpg') }}" class="media-object img-circle" height="150px" width="150px"></div>
+         <div class="media-body">
+             <h1><b><center>Madhav Vij: 1001440170; class: Advance DB</center></b></h1>
+         </div>
+        {% if count %}
+            <h3>Total Count: {{ count }}</h3><h3>Total Time: {{ total }}</h3>
+        {% endif %}
+    </div>
+
+<div class="container">
+{% for img_name in nameList %}
+        <div class="media-left">
+         <img src="{{ url_for('static', filename = img_name+'.jpg') }}" class="media-object img-circle" height="150px"
+              width="150px"></div>
+         <div class="media-body">
+             <b>{{ img_name }}</b>
+
+    </div>
+{% endfor %}
+
+{% for cal in calList %}
+
+             <b>{{ cal }}</b>
+{% endfor %}
+
+{% for category in categoryList %}
+    <b>{{ category }}</b>
+{% endfor %}
+</div>
+<hr/>
+
+</body>
+</html>
