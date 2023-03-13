@@ -50,11 +50,11 @@ def test():
     conn = connectDB()
     cur = conn.cursor()
     name = 'Omelette'
-    cur.execute('select PICTURE from food WHERE NAME like "%'+name+'%"')
+    cur.execute(f'select PICTURE from food WHERE NAME like "%{name}%"')
     data = cur.fetchone()[0]
-    with open('/home/madhav/quiz8/static/'+name+'.jpg','w') as local_file:
+    with open(f'/home/madhav/quiz8/static/{name}.jpg', 'w') as local_file:
         local_file.write(data)
-    img_name = name+'.jpg'
+    img_name = f'{name}.jpg'
 
     cur.close()
     conn.close()
@@ -89,16 +89,11 @@ def displayContent():
     categoryList = []
     nameList = []
     for root, dirs, files in os.walk(path):
-        for file in files:
-            if file.endswith(".jpg"):
-                filelist.append(file)
-
-
-
+        filelist.extend(file for file in files if file.endswith(".jpg"))
     for file in filelist:
         name = file[:-4]
         nameList.append(name)
-        sql = 'select DIGITS,CATEGORY from food WHERE NAME like "%'+name+'%"'
+        sql = f'select DIGITS,CATEGORY from food WHERE NAME like "%{name}%"'
         cur.execute(sql)
         data = cur.fetchone()
 
